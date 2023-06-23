@@ -1,0 +1,252 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+
+$primary_white: whitesmoke;
+$primary_dark: #222;
+$box_shadow: 4px 6px 10px #181818;
+
+$main_red: #fa1010af;
+$main_green: #03dc03b5;
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  font-size: 20px;
+  color: $primary_white;
+  user-select: none;
+  background: rgb(140, 47, 47);
+  background: linear-gradient(65deg, rgba(140, 47, 47, 1) 0%, rgba(47, 43, 64, 1) 86%);
+}
+
+li {
+  list-style-type: none;
+}
+
+input,
+button {
+  font-family: inherit;
+  margin-bottom: 8px;
+}
+
+input[type='text'] {
+  padding: 6px 8px;
+  border-radius: 6px;
+  border: none;
+  font-size: 16px;
+  outline: none;
+  transition: box-shadow 0.3s linear;
+  width: 280px;
+}
+
+input[type='text']:focus {
+  box-shadow: 0px 0px 10px #a667e4;
+}
+
+input[type='checkbox'],
+button {
+  cursor: pointer;
+}
+
+input[type='checkbox'] {
+  margin-right: 10px;
+}
+
+// APP
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+// SIDEBAR:
+.open-sidebar-btn,
+.close-sidebar-btn {
+  border: none;
+  background-color: transparent;
+  color: $primary_white;
+  font-size: 30px;
+  position: absolute;
+
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s linear;
+}
+
+.open-sidebar-btn {
+  top: 20px;
+  left: 20px;
+  z-index: 98;
+}
+
+.steppies-amount {
+  position: absolute;
+  font-size: 20px;
+  margin-left: 50px;
+  margin-bottom: 24px;
+}
+
+.close-sidebar-btn {
+  top: 20px;
+  right: 20px;
+}
+
+.open-sidebar-btn:hover,
+.close-sidebar-btn:hover {
+  color: orangered;
+}
+
+.sidebar {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 400px;
+  height: 100vh;
+  z-index: 99;
+  transform: translateX(-200%);
+  transition: transform 0.3s linear;
+  background: rgb(140, 47, 47);
+  background: linear-gradient(65deg, rgba(140, 47, 47, 1) 0%, rgba(47, 43, 64, 1) 86%);
+}
+
+.sidebar-open {
+  transform: translateX(0);
+}
+
+// FORM
+.form-section {
+  background-color: rgba(53, 51, 51, 0.678);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: $box_shadow;
+  position: relative;
+  padding-top: 70px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.btn {
+  background-color: #a667e4;
+  border: none;
+  border-radius: 6px;
+  background-color: $primary_white;
+  color: $primary_dark;
+  padding: 4px 16px;
+  transition: all 0.2s linear;
+}
+
+.btn:hover {
+  background-color: #0a0a0a;
+  color: $primary_white;
+}
+
+// ALERT:
+.alert {
+  position: fixed;
+  bottom: 0;
+  padding: 10px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  text-align: center;
+}
+
+.danger {
+  background-color: $main_red;
+  box-shadow: $box_shadow;
+}
+
+.success {
+  background-color: $main_green;
+  box-shadow: $box_shadow;
+}
+
+// LIST:
+.steppies-title {
+  margin-bottom: 30px;
+}
+
+.list {
+  width: 100%;
+  height: 100%;
+  padding: 30px;
+}
+
+.done {
+  text-decoration: line-through;
+}
+
+.drag-area {
+  display: inline;
+  color: #d2ecc094;
+  margin-top: 8px;
+  margin-right: 4px;
+}
+
+.steppi-name {
+  margin-right: auto;
+}
+
+.list-steppi-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.list-steppi-btns-container {
+  display: flex;
+  gap: 10px;
+}
+
+.list-steps-wrapper {
+  padding-left: 20px;
+  display: none;
+}
+
+.show-list {
+  display: block;
+}
+
+.list-btn {
+  font-size: 18px;
+  background-color: transparent;
+  border: none;
+  color: $primary_white;
+  transition: all 0.3s linear;
+}
+
+.show-steps-btn:hover {
+  color: #e8e226;
+}
+
+.edit-btn:hover {
+  color: $main_green;
+}
+
+.delete-btn:hover {
+  color: $main_red;
+}
+
+@media (max-width: 500px) {
+  .sidebar {
+    width: 100%;
+  }
+}

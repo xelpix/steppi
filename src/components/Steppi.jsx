@@ -5,7 +5,6 @@ import { RxDragHandleHorizontal } from 'react-icons/rx';
 
 import Step from './Step';
 
-// we need this provided guy from top to destructure it to make a handle
 function Steppi({ steppi, provided }) {
   const steppiesList = useStoreState((state) => state.steppiesList);
   const deleteSteppi = useStoreActions((actions) => actions.deleteSteppi);
@@ -18,38 +17,27 @@ function Steppi({ steppi, provided }) {
 
   const closeSidebar = useStoreActions((actions) => actions.closeSidebar);
 
-  // should I write it in a sep handleDelete fn for consistency ?
-  // like:
-  // const handleDelete = () => {}
-  // for now I'll skip it.
   const handleEdit = (id) => {
     closeSidebar();
     setIsEditing(true);
     editSteppi(id);
   };
 
-  // on this uE we listen steppiesList. if it changes..
-  // we check each steppi of the list on completion
   useEffect(() => {
     steppiesList.forEach((steppi) => {
-      // here it should return true if all steps are completed
       const allCompleted = steppi.steps.every((step) => step.completed);
 
-      // if so, we set steppieDone (passing the id)
       if (allCompleted) {
         setSteppiDone(steppi.id);
       } else {
-        // if not, we passing the id to unDone fn.
         setSteppiUndone(steppi.id);
       }
     });
   }, [steppiesList]);
 
-  // see how simple is to create draggable area
   return (
     <div>
       <div className="list-steppi-header">
-        {/* HERE! */}
         <div className="drag-area" {...provided.dragHandleProps}>
           <RxDragHandleHorizontal />
         </div>
@@ -81,7 +69,6 @@ function Steppi({ steppi, provided }) {
         </div>
       </div>
 
-      {/* decided to abstract it even further */}
       <div className={`list-steps-wrapper ${steppi.isShown ? 'show-list' : ''}`}>
         {steppi.steps.map((step, index) => {
           return <Step key={index} steppi={steppi} step={step} index={index} />;

@@ -1,13 +1,9 @@
 import { useStoreActions } from 'easy-peasy';
 
-// we need to receive steppi,
 function Step({ steppi, step, index }) {
   const checkSteppi = useStoreActions((actions) => actions.checkSteppi);
 
-  // we could do just checkSteppi inline, but.. ok!
   const handleCheck = (id, idx) => {
-    // to make this work I need to pass object as payload,
-    // with id of the steppi and idx of the step.
     checkSteppi({ id, idx });
   };
 

@@ -4,7 +4,6 @@ import { FaTimes } from 'react-icons/fa';
 import { useStoreActions } from 'easy-peasy';
 
 function Sidebar() {
-  // simplest component!
   const isSidebarOpen = useStoreState((state) => state.isSidebarOpen);
   const closeSidebar = useStoreActions((actions) => actions.closeSidebar);
 

@@ -5,14 +5,10 @@ function Alert() {
   const alert = useStoreState((store) => store.alert);
   const setAlert = useStoreActions((actions) => actions.setAlert);
 
-  // this is kind slow infinite loop with 3000 ms step
-  // because of our [alert] dependency,
-  // but it's okay here... I guess O_o
   useEffect(() => {
     const timeout = setTimeout(() => {
       setAlert({ show: false, msg: '', type: '' });
     }, 3000);
-    // cleanup fn.
     return () => clearTimeout(timeout);
   }, [alert]);
 

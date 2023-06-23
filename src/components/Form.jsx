@@ -1,7 +1,6 @@
 import { useStoreActions, useStoreState } from 'easy-peasy';
 
 function Form() {
-  // all our state and actions from the store.
   const formName = useStoreState((state) => state.formName);
   const setFormName = useStoreActions((actions) => actions.setFormName);
 
@@ -16,12 +15,10 @@ function Form() {
   const isEditing = useStoreState((store) => store.isEditing);
   const addEditedSteppi = useStoreActions((actions) => actions.addEditedSteppi);
 
-  // controlled input of the name.
   const handleFormName = (e) => {
     setFormName(e.target.value);
   };
 
-  // controlled input of the steps (tricky way, we passing event + index)
   const handleFormSteppies = (e, index) => {
     const steps = [...formSteps];
     steps[index]['step'] = e.target.value;
@@ -29,9 +26,8 @@ function Form() {
   };
 
   const submitSteppi = (e) => {
-    e.preventDefault(); // preventing reload
+    e.preventDefault();
 
-    // creating steppi object
     const steppiObj = {
       steppiName: formName,
       done: false,
@@ -39,7 +35,6 @@ function Form() {
       steps: formSteps,
     };
 
-    // and depending on 'isEditing flag', we pass it to one of the fn.
     if (!isEditing) {
       addSteppi(steppiObj);
     }
